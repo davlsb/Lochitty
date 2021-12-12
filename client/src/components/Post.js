@@ -24,8 +24,51 @@ const theme = createTheme({
   },
 });
 
+/*
+deletePost = (event) => {
+  fetch("/api/posts/", {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({content: this.state.content, title: this.state.title}),
+  })
+    .then(res => {
+      if(res.ok) {
+        return res.json()
+      }
 
-function Post({ content, createdAt, id }) {
+      throw new Error('Content validation');
+    })
+    .then(post => {
+      this.setState({
+        success: true,
+      });
+    })
+    .catch(err => {
+      this.setState({
+        error: true,
+      });
+    });
+}
+*/
+function getDateToCreateAt(date) {
+  var d = new Date( date );
+  // d = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  // var newMinute;
+  // newMinute.toString(d.getMinutes());
+  // if(newMinute.substring(2) == null) newMinute.concat("0");
+  d.toLocaleDateString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  //d = d.toDateString().substring(3) + " | " + (d.getHours()% 12 || 12) + ":" + d.getMinutes();
+  return d.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }).replace(',','');;
+
+
+  
+
+}
+
+function Post({title, content, createdAt, id }) {
   return (
     <ThemeProvider theme={theme}>
 
@@ -33,8 +76,8 @@ function Post({ content, createdAt, id }) {
       <Box sx={{ gridArea: 'title'}}>
         <CardHeader
           sx={{fontSize: 2}}
-          title={"Post by NAME"}
-          subheader={ createdAt } 
+          title={ title}
+          subheader={ getDateToCreateAt(createdAt) } 
         />
       </Box>
       
@@ -42,20 +85,18 @@ function Post({ content, createdAt, id }) {
 
       <Box sx={{ gridArea: 'main'}}>
         
-      <Typography sx={{fontSize: 20}}>
+      <Typography sx={{fontSize: 20, paddingLeft: '55px'}}>
         { content }
         </Typography>
 
       </Box>
       </CardContent>
       
-      <CardContent sx={{maxWidth:'25em'}}>
+      <CardContent sx={{maxWidth:'25em', marginLeft: "auto"}}>
       <Box sx={{ gridArea: 'sidebar'}}>
-        
-      <IconButton style={{outline: 'none'}} aria-label="delete" color="primary">
-          <DeleteOutlineRoundedIcon />
+        <IconButton style={{outline: 'none'}} aria-label="delete" color="primary">
+            <DeleteOutlineRoundedIcon />
         </IconButton>
-
       </Box>
 
 

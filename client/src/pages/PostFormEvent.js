@@ -16,7 +16,7 @@ const theme = createTheme({
   },
 });
 
-class PostFormPage extends React.Component {
+class PostFormEvent extends React.Component {
     state = {
     error: false,
     success: false,
@@ -64,7 +64,6 @@ class PostFormPage extends React.Component {
       });
   }
 
-
   render() {
     if(this.state.success) return <Redirect to="/" />;
 
@@ -77,29 +76,28 @@ class PostFormPage extends React.Component {
       );
     }
 
-
     return (
-      <ThemeProvider theme={theme}>
-          <div className="col-10 col-md-8 col-lg-7" style={{ alignItems:'center', height: '25em', width: '25em' }}>
-            <div style={{padding:'200'}}>
-              { errorMessage }
-            </div>
-          <div>
-            <div newPost style={{ paddingBottom: '1em', fontSize: '2em', fontWeight: 'bolder' }}>
-              Compose Post
-            </div>
-            <div inputs style={{ borderRadius: "4em", textAlign: 'center', paddingLeft: '2em' }}>
+    <ThemeProvider theme={theme}>
+      <div className="col-10 col-md-8 col-lg-7" style={{ alignItems: 'center', height: '25em', width: '25em' }}>
+        <div style={{ padding: '200' }}>
+          {errorMessage}
+        </div>
+        <div>
+          <div newPost style={{ paddingBottom: '1em', fontSize: '2em', fontWeight: 'bolder', whiteSpace: 'nowrap' }}>
+            Compose Event
+          </div>
+          <div inputs style={{ borderRadius: "4em", textAlign: 'center', paddingLeft: '2em' }}>
           <TextField required style={{width: '20em', marginLeft: "auto", marginRight: "auto"}} sx={{}} id="Title" label="Title..." variant="outlined" value={this.state.title} onChange={this.titleChanged} />
             <div style={{ padding: '0.5em' }}></div>
           <TextField multiline rows={4} required style={{width: '20em', marginLeft: "auto", marginRight: "auto"}} sx={{borderRadius: "4em"}} id="Content" label="Content..." variant="outlined" value={this.state.content} onChange={this.contentChanged} />
             <div style={{ padding: '0.5em' }}></div>
-              <button style={{ position:'relative', left:'35%'}} className="btn btn-fancy" onClick={this.savePost}>Post Message</button>
-            </div>
+            <button style={{ position: 'relative', left: '35%' }} className="btn btn-fancy" onClick={this.savePost}>Post Message</button>
           </div>
         </div>
-        </ThemeProvider>
+      </div>
+      </ThemeProvider>
     );
   }
 }
 
-export default PostFormPage;
+export default PostFormEvent;

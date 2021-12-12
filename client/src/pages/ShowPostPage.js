@@ -2,6 +2,9 @@ import React from 'react';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
+import FAB from '../components/fab';
 
 class ShowPostPage extends React.Component {
   state = {
@@ -31,6 +34,7 @@ class ShowPostPage extends React.Component {
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
+    <FAB/>
     return this.state.post;
   }
 }

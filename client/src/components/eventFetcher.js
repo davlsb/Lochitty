@@ -1,3 +1,4 @@
+//needs fix on the dropt down description the component needs a parent that has a column direction in order to drop down properly
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -14,6 +15,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Box from '@mui/material/Box';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -35,7 +37,7 @@ export default function EventCard(props) {
   };
 
   return (
-    <Card className="p-5 d-flex border-bottom" sx={{ borderRadius: 4, marginBottom: 2, border: 0, boxShadow: 7 }}>
+    <Card className="p-4 d-flex border-bottom" sx={{display: 'grid', marginLeft:"2.5em", width: "93%", borderRadius: 4, marginBottom: 2, border: 0, boxShadow: 7 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={props.data.user.profilePic} >

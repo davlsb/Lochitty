@@ -1,0 +1,60 @@
+/* <- Demo Stuff Start */
+
+body{
+    margin:0;
+    font-weight: 'bolder';
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 80vw;
+    color: white;
+    margin: 0 auto;
+    font-weight: 'bolder';
+  }
+  .btn {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    font-weight: 'bold';
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 1em;
+    border: transparent;
+    font-weight: bold;
+   }
+  
+  /* Demo Stuff End -> */
+  
+  
+  .btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color:white;
+    font-weight: bold;
+  }
+  
+  .btn-fancy {
+    background-image: linear-gradient(to right, #689CA4 0%, #425B78 51%, #425B78 100%);
+  }
+
+  #alert {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fde073;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+ 
