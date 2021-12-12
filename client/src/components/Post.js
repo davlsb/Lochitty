@@ -76,7 +76,7 @@ function Post({title, content, createdAt, id }) {
       <Box sx={{ gridArea: 'title'}}>
         <CardHeader
           sx={{fontSize: 2}}
-          title={ title}
+          title={title}
           subheader={ getDateToCreateAt(createdAt) } 
         />
       </Box>
