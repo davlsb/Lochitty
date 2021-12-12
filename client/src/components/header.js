@@ -63,7 +63,7 @@ export default function Header() {
     }}>
       
 
-    <a href="/"><img src={Lochitty} style={{width:'130px'}}/></a>
+    <a href="/posts"><img src={Lochitty} style={{width:'130px'}}/></a>
 
     <div style={{backgroundColor: 'white', borderRadius: '40px', backgroundColor:'transparent', borderColor:'transparent', paddingRight: '4em'}}>
     
@@ -87,14 +87,14 @@ export default function Header() {
         },
       }}
     >
-      <ToggleButton style={{borderColor:'transparent', fontFamily: 'Roboto', paddingInline:'1em', fontWeight: "bold", borderRadius: '100px 0 0 100px'}} size='small' value="messages" href="/posts">Messages</ToggleButton>
-      <ToggleButton style={{borderColor:'transparent', fontFamily: 'Roboto', paddingInline:'1em',fontWeight: "bold", borderRadius: '0 100px 100px 0'}} size='small' value="events" href="/events">Events</ToggleButton>
+      <ToggleButton style={{borderColor:'transparent', fontFamily: 'Roboto', paddingInline:'1em', fontWeight: "bold", borderRadius: '100px 0 0 100px'}} size='small' value="messages">Messages</ToggleButton>
+      <ToggleButton style={{borderColor:'transparent', fontFamily: 'Roboto', paddingInline:'1em',fontWeight: "bold", borderRadius: '0 100px 100px 0'}} size='small' value="events">Events</ToggleButton>
     </ToggleButtonGroup>
   
+
     </div>
       </div>
       {/* <ToggleButton onChange={() => {setDisplayModal(!displayModal)}} onClick={modalPage} value="events" style={{color:"#000000"}}>Login</ToggleButton>  */}
-      
       <NestedModal/>
       </div>
       {/* pop up functionality */}

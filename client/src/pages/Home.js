@@ -18,11 +18,7 @@ import {
 import PostsListPage from './PostsListPage';
 import PostFormPage from './PostFormPage';
 import ShowPostPage from './ShowPostPage';
-import ShowEvents from './EventRoute';
 import AboutUsPage from './AboutUsPage';
-import PostMessages from '../components/PostModal.js';
-import PostEvent from '../components/EventModal.js';
-import Profile from './ProfilePage.js';
 
 export default function Home() {
   return (
@@ -33,17 +29,19 @@ export default function Home() {
           <div >
     
             <Switch>
-              <Route path="/posts/newMessage" component={PostMessages} />
-              <Route path="/posts/newEvent" component={PostEvent} />
-              <Route path="/events" component={ShowEvents} />
+              <Route path="/posts/newMessage" component={PostFormPage} />
               <Route path="/posts/:id" component={ShowPostPage} />
-              <Route path="/profiles" component={Profile} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/" component={PostsListPage} />
             </Switch>
+            
           </div>
         </div>
         </Router>
+      {eventData.map((item, index) => (<EventCard key={index} data={item} />))}
+      {/* {Object.values(eventData).map(event => (
+      <EventCard props={event} />
+    ))} */}
 
       <FAB />
     </Container></>

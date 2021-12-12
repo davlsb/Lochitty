@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Backdrop from '@material-ui/core/Backdrop';
 
 const style = {
   position: 'absolute',
@@ -39,7 +38,6 @@ const theme = createTheme({
 function ChildModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-    
     setOpen(true);
   };
   const handleClose = () => {
@@ -49,9 +47,9 @@ function ChildModal() {
   return (
     <ThemeProvider theme={theme}>
     <React.Fragment>
-      <Button data-dismiss="modal" style={{color:"#689ca4"}} onClick={handleOpen}>Don't have an account? Sign Up</Button>
+      <Button style={{color:"#689ca4"}} onClick={handleOpen}>Don't have an account? Sign Up</Button>
       <Modal
-        //hideBackdrop
+        hideBackdrop
         open={open}
         onClose={handleClose}
         aria-labelledby="child-modal-title"
@@ -78,7 +76,6 @@ export default function NestedModal() {
 
   return (
     <div>
-      <Button variant="text"><a href="/profiles" style={{color:"black"}}>Profile</a></Button>
       <Button onClick={handleOpen}>Login</Button>
       <Modal
         open={open}
@@ -88,10 +85,9 @@ export default function NestedModal() {
       >
         <Box sx={{ ...style, width: 500 }}>
         <SignIn/>
-          <ChildModal/>
+          <ChildModal />
         </Box>
       </Modal>
     </div>
   );
-
 }

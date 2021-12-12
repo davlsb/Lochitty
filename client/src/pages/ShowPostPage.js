@@ -2,8 +2,6 @@ import React from 'react';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
-import IconButton from '@mui/material/IconButton';
-import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
 class ShowPostPage extends React.Component {
   state = {

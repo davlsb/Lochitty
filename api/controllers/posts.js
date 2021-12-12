@@ -23,9 +23,9 @@ router.get('/', (req,res) => {
 
 
 router.post('/', (req, res) => {
-  let { content, title } = req.body;
+  let { content } = req.body;
   
-  Post.create({ content, title })
+  Post.create({ content })
     .then(post => {
       res.status(201).json(post);
     })
