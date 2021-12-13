@@ -8,7 +8,7 @@ import FAB from '../components/fab';
 
 class PostsListPage extends React.Component {
   state = {
-    posts: [`<Post props={'hello',"hellsoo",1} key='Name' />`],
+    posts: [``],
     loading: true,
   }
 

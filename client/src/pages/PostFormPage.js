@@ -22,8 +22,12 @@ class PostFormPage extends React.Component {
     success: false,
     content: '',
     title: '',
+    latitude: '',
+    longitude: 0,
   }
 
+
+  
   contentChanged = (event) => {
     this.setState({
       content: event.target.value
@@ -36,6 +40,24 @@ class PostFormPage extends React.Component {
     });
   }
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        let lat = position.coords.latitude
+        let lng = position.coords.longitude
+        console.log("getCurrentPosition Success " + lat +" and "+ lng)
+        this.setState({
+            longitude: position.coords.latitude,
+            latitude: position.coords.longitude,
+          })
+      },
+      (error) => {
+        this.props.displayError("Error dectecting your location");
+        console.error(JSON.stringify(error))
+      },
+    )
+  }
+
   savePost = (event) => {
     fetch("/api/posts/", {
       method: 'POST',
@@ -43,7 +65,7 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({content: this.state.content, title: this.state.title}),
+      body: JSON.stringify({content: this.state.content, title: this.state.title, longitude:this.state.longitude, latitude: this.state.latitude}),
     })
       .then(res => {
         if(res.ok) {
@@ -62,10 +84,12 @@ class PostFormPage extends React.Component {
           error: true,
         });
       });
+      
   }
 
 
   render() {
+    const location = this.state.location;
     if(this.state.success) return <Redirect to="/" />;
 
     let errorMessage = null;
@@ -103,3 +127,5 @@ class PostFormPage extends React.Component {
 }
 
 export default PostFormPage;
+
+

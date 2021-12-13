@@ -18,6 +18,22 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 250],
         notEmpty: true,
+      },
+    },
+    latitude: {
+      type: DataTypes.DECIMAL(9,6),
+      validate: {
+        min: -90,
+        max: 90,
+        notEmpty: true,
+      }
+    },
+    longitude: {
+      type: DataTypes.DECIMAL(9,6),
+      validate: {
+        min: -180,
+        max: 180,
+        notEmpty: true,
       }
     },
   }, {

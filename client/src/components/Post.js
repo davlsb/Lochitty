@@ -68,7 +68,7 @@ function getDateToCreateAt(date) {
 
 }
 
-function Post({title, content, createdAt, id }) {
+function Post({title, content, createdAt, id, longitude, latitude }) {
   return (
     <ThemeProvider theme={theme}>
 
@@ -77,7 +77,7 @@ function Post({title, content, createdAt, id }) {
         <CardHeader
           sx={{fontSize: 2}}
           title={title}
-          subheader={ getDateToCreateAt(createdAt) } 
+          subheader={ getDateToCreateAt(createdAt)}
         />
       </Box>
       
@@ -94,6 +94,8 @@ function Post({title, content, createdAt, id }) {
       
       <CardContent sx={{maxWidth:'25em', marginLeft: "auto"}}>
       <Box sx={{ gridArea: 'sidebar'}}>
+      {longitude}
+      {latitude} 
         <IconButton style={{outline: 'none'}} aria-label="delete" color="primary">
             <DeleteOutlineRoundedIcon />
         </IconButton>
