@@ -21,6 +21,21 @@ router.post('/signup', (req, res) => {
     });
 });
 
+router.put('users/:id', function(req, res) {
+  User.findById(req.params.id, function(err, user) {
+      if (err) res.send(err);
+      if (req.body.fullName) user.fullName = req.body.fullName;
+      if (req.body.lastName) user.lastName = req.body.lastName;
+      if (req.body.city) user.city = req.body.city;
+
+      user.save(function(err) {
+          if (err) return res.send(err);
+          return res.send('User updated');
+      });
+
+  });
+});
+
 router.post('/login',
   passport.authenticate('local'),
   (req, res) => {

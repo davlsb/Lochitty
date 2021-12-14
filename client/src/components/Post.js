@@ -62,13 +62,10 @@ function getDateToCreateAt(date) {
   d.toLocaleDateString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
   //d = d.toDateString().substring(3) + " | " + (d.getHours()% 12 || 12) + ":" + d.getMinutes();
   return d.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }).replace(',','');;
-
-
-  
-
 }
 
-function Post({title, content, createdAt, id, longitude, latitude }) {
+
+function Post({title, content, createdAt, id, longitude, latitude, city, zip }) {
   return (
     <ThemeProvider theme={theme}>
 
@@ -94,8 +91,7 @@ function Post({title, content, createdAt, id, longitude, latitude }) {
       
       <CardContent sx={{maxWidth:'25em', marginLeft: "auto"}}>
       <Box sx={{ gridArea: 'sidebar'}}>
-      {longitude}
-      {latitude} 
+      {city} ➤ {zip} 
         <IconButton style={{outline: 'none'}} aria-label="delete" color="primary">
             <DeleteOutlineRoundedIcon />
         </IconButton>

@@ -36,6 +36,15 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
+    zip: {
+      type: DataTypes.INTEGER,
+    },
+    city: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [3, 250],
+      }
+    },
   }, {
     sequelize,
     modelName: 'post'

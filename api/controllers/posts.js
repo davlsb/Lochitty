@@ -25,9 +25,9 @@ router.get('/', (req,res) => {
 
 
 router.post('/', passport.isAuthenticated(), (req, res) => {
-  let { content, title, latitude, longitude  } = req.body;
+  let { content, title, latitude, longitude, zip, city  } = req.body;
   
-  Post.create({ content, title, latitude, longitude })
+  Post.create({ content, title, latitude, longitude, zip, city })
     .then(post => {
       res.status(201).json(post);
     })

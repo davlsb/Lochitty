@@ -5,7 +5,8 @@ import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../context/AuthContext';
 import { withRouter, Link } from 'react-router-dom';
-
+import CurrentLocation from 'react-current-location-address';
+import publicIp from "public-ip";
 
 const theme = createTheme({
   palette: {
@@ -24,11 +25,13 @@ class PostFormPage extends React.Component {
     success: false,
     content: '',
     title: '',
-    latitude: '',
+    latitude: 0,
     longitude: 0,
+    zip: 0,
+    city: '',
   }
 
-
+  publicIp = require('public-ip');
   
   contentChanged = (event) => {
     this.setState({
@@ -43,6 +46,15 @@ class PostFormPage extends React.Component {
   }
 
   componentDidMount() {
+    fetch(
+      "http://ip-api.com/json/?fields=city,zip"
+    )
+      .then(response => response.json())
+      .then((data) => {console.log(data.city + " " + data.zip)
+        this.setState({
+          zip: data.zip,
+          city:data.city,
+        })});
     navigator.geolocation.getCurrentPosition(
       (position) => {
         let lat = position.coords.latitude
@@ -59,6 +71,7 @@ class PostFormPage extends React.Component {
       },
     )
   }
+  
 
   savePost = (event) => {
     fetch("/api/posts/", {
@@ -67,7 +80,7 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({content: this.state.content, title: this.state.title, longitude:this.state.longitude, latitude: this.state.latitude}),
+      body: JSON.stringify({content: this.state.content, title: this.state.title, longitude:this.state.longitude, latitude: this.state.latitude, city: this.state.city, zip: this.state.zip}),
     })
       .then(res => {
         if(res.ok) {

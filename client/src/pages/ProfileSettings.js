@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import snackBar from '../components/snackBar.js';
 import '../components/fancyButtons.css';
 import { Container, ImageListItem } from '@mui/material';
+import { withRouter, Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const theme = createTheme({
   palette: {
@@ -25,7 +27,18 @@ const theme = createTheme({
 });
 
 
-function ProfileSettings({profileID, profileName, setLocation, bio}) {
+const ProfileSettings = withRouter(({ history }) => {
+
+  const auth = useContext(AuthContext);
+
+  const [firstName, setFirstName] = useState(auth.user.firstName);
+  const [lastName, setlastName] = useState(auth.user.lastName);
+  const [city, setCity] = useState(auth.user.city);
+
+  const handleChange = (e) => {
+    setFirstName({[e.target.name] : e.target.value});
+  }
+
   return (
     <ThemeProvider theme={theme}>
        <Container>
@@ -55,31 +68,29 @@ function ProfileSettings({profileID, profileName, setLocation, bio}) {
       </div>
 
       <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="12vh"
+      position = "relative"
+      display ='flex'
+      justifyContent ='center'
+      minHeight="8vh"
       >
-        <TextField required style={{marginLeft: "auto", marginRight: "auto"}} sx={{width: 400}} id="FullName" label="Name" variant="outlined" /> 
+        <TextField required style={{marginLeft: "auto", marginRight: "auto"}} sx={{width: 400}} id="firstName" value={firstName} label={"First Name: " + auth.user.firstName} variant="outlined" /> 
       </Box>
 
       <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="5vh"
+      position = "relative"
+      display ='flex'
+      justifyContent ='center'
+      minHeight="8vh"
       >
-        <TextField multiline rows={4} required style={{marginLeft: "auto", marginRight: "auto"}} sx={{width: 400}} id="Bio" label="Bio" variant="outlined" />
-      
+        <TextField required style={{marginLeft: "auto", marginRight: "auto"}} sx={{width: 400}} id="lastName" value={lastName} onChange={handleChange} label={"Last Name: "+ auth.user.lastName} variant="outlined" /> 
       </Box>
 
       <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="12vh"
+      position = "relative"
+      display ='flex'
+      justifyContent ='center'
       >
-        <TextField required style={{marginLeft: "auto", marginRight: "auto"}} sx={{width: 400}} id="Location" label="Location" variant="outlined" />
+        <TextField required style={{marginLeft: "auto", marginRight: "auto"}} sx={{width: 400}} id="city" value={city} label={"City: " + auth.user.city} variant="outlined" />
       
       </Box>
 
@@ -91,10 +102,9 @@ function ProfileSettings({profileID, profileName, setLocation, bio}) {
         <Button variant="text"><a href="/deleteAccount" style={{position:"fixed", bottom: "90px", left: "68px", width: "177px",height: "28px", textTransform:"capitalize", alignItems: "flex-end", whiteSpace: "nowrap", color:"#689ca4"}}><br/>Delete Account?</a></Button>
         <button style={{position:"fixed", bottom: "30px", right: "40px", width: "170px", fontSize: "1.3em"}} sx={{width: 400}} className="btn btn-fancy">Done</button>
       </Box>
-
       </Container>
     </ThemeProvider>
-  );
-}
+    );
+  });
 
 export default ProfileSettings;

@@ -44,7 +44,7 @@ export default function EventCard(props) {
           </Avatar>
         }
         title={props.data.user.name}
-        subheader="September 14, 2016"
+        subheader="September 14, 2021"
       />
 
      
