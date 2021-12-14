@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import 'typeface-roboto';
 import { color } from '@mui/system';
 import NestedModal from './Modal';
+import AuthButton from './AuthButton';
 
 import './header.css';
 
@@ -94,8 +95,7 @@ export default function Header() {
     </div>
       </div>
       {/* <ToggleButton onChange={() => {setDisplayModal(!displayModal)}} onClick={modalPage} value="events" style={{color:"#000000"}}>Login</ToggleButton>  */}
-      
-      <NestedModal/>
+      <AuthButton />
       </div>
       {/* pop up functionality */}
       {/* {displayModal===true?<NestedModal/>:null} */}

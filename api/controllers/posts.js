@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const passport = require('../middlewares/authentication');
 const { Post } = db;
+
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -22,7 +24,7 @@ router.get('/', (req,res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/', passport.isAuthenticated(), (req, res) => {
   let { content, title, latitude, longitude  } = req.body;
   
   Post.create({ content, title, latitude, longitude })
@@ -68,7 +70,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   Post.findByPk(id)
     .then(post => {

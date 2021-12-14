@@ -5,11 +5,6 @@ import { Container, ImageListItem } from '@mui/material';
 import { Button } from '@mui/material';
 import Lochitty from '../components/lochitty.png'
 import Header from '../components/header';
-import FAB from '../components/fab';
-import EventCard from '../components/eventFetcher';
-import eventData from '../components/mockData.json';
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
 
 import { 
   BrowserRouter as Router, 
@@ -27,29 +22,34 @@ import PostMessages from '../components/PostModal.js';
 import PostEvent from '../components/EventModal.js';
 import ProfileSettings from './ProfileSettings.js';
 import Profile from './Profile.js';
+import { AuthProvider } from '../context/AuthContext';
+import LoginPage from './LoginPage';
+import PrivateRoute from '../components/PrivateRoute';
 
 export default function Home() {
   return (
-    <><Header />
-    <Container>
+    <AuthProvider>
     <Router>
+    <Header />
         <div>
           <div >
+          <Container>
             <Switch>
-              <Route path="/profile" component={Profile} />
-              <Route path="/profile-settings" component={ProfileSettings} />
+              <Route path="/login" component={LoginPage} />
               <Route path="/posts/newMessage" component={PostMessages} />
               <Route path="/posts/newEvent" component={PostEvent} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/profile-settings" component={ProfileSettings} />
               <Route path="/events" component={ShowEvents} />
               <Route path="/posts/:id" component={ShowPostPage} />
               <Route path="/profiles" component={Profile} />
-              <Route path="/about-us" component={AboutUsPage} />
               <Route path="/" component={PostsListPage} />
             </Switch>
+            </Container>
           </div>
         </div>
         </Router>
-    </Container></>
+    </AuthProvider>
   );
 }
 

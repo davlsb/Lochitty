@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -10,6 +10,9 @@ import '../components/fancyButtons.css';
 import Header from '../components/header';
 import { Container, ImageListItem } from '@mui/material';
 import PostsListProfile from './PostsListsProfile';
+import Button from '@mui/material/Button';
+import { withRouter, Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const theme = createTheme({
   palette: {
@@ -23,10 +26,18 @@ const theme = createTheme({
 });
 
 
-function Profile({profileID, profileName, setLocation, bio}) {
+const Profile = withRouter(({ history }) => {
+
+  const auth = useContext(AuthContext);
+
+  const logout = () => {
+    auth.signout().then(() => history.push('/'));
+  }
+
   return (
     <ThemeProvider theme={theme}>
-        <div style={{position: "absolute",
+        
+      <div style={{position: "absolute",
           top: "5em",
           left: 0,
           zIndex: "0",
@@ -34,14 +45,14 @@ function Profile({profileID, profileName, setLocation, bio}) {
           justifyContent: "space-around",
           alignItems: 'center',
           padding: '200px',
-          paddingBottom: '400px',
+          paddingBottom: '50px',
           backgroundColor: '#e1ebed',
           backgroundImage: 'linear-gradient(#e1ebed, #e1ebed, #e1ebed, white)',
           }}>
         </div>
         <Container>
        
-
+        <Card variant="outlined" sx={{borderColor: 'transparent', borderRadius: 8, paddingTop: 5, paddingLeft: 5, paddingRight: 5}}>
       <div class="Avatar" style={{paddingBottom: "10em"}}>
         <Avatar style={{backgroundImage: "url(" + MockAvatarImage + ")",transform: "translate(-50%, -50%)", backgroundRepeat: "no-wrap", backgroundPosition: "center", backgroundSize:"200px", position: "absolute", top: "20%", left: "50%", right:"50%", width: 110, height: 110 }}> </Avatar>
       </div>
@@ -56,22 +67,37 @@ function Profile({profileID, profileName, setLocation, bio}) {
             bottomMargin="2em"
             textAlign="center"
             >
-              <h1> <b>Megan Stanley</b></h1>
+              <h1> <b>{auth.user.firstName} {auth.user.lastName}</b></h1>
       </Box>
 
-      <div style={{position: "absolute", width: "70%", paddingTop: '7em'}}>
+      <Box 
+            position = "absolute"
+            top = "42%"
+            left = "46%"
+            display="flex"
+            minHeight="7vh" 
+            zIndex= "3"
+            bottomMargin="4em"
+            textAlign="center"
+            >
+              <h3>{auth.user.city}</h3>
+      </Box>
+
+
+      <div style={{width: "100%", paddingTop: '9em'}}>
         <PostsListProfile/>
       </div>
 
+      <Button onClick={logout} style={{position:"fixed", bottom: "60px", left: "68px", width: "177px",height: "28px", textTransform:"capitalize", alignItems: "flex-end", whiteSpace: "nowrap", color:"#689ca4"}}>Logout</Button>
       <Box
       display="flex"
       >
         <a href="/profile-settings" style={{marginLeft: "81%"}}><button style={{ position:"fixed", bottom: "30px", right: "40px", width: "170px", fontSize: "1.3em"}} sx={{width: 400}} className="btn btn-fancy">Edit Profile</button></a>
       </Box>
-
+      </Card>
       </Container>
     </ThemeProvider>
-  );
-}
+    );
+  });
 
 export default Profile;

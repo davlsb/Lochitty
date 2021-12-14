@@ -1,19 +1,18 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import ForumRoundedIcon from '@mui/icons-material/ForumRounded';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
+import { AuthContext } from '../context/AuthContext';
 
 
 const actions = [
   { icon: <EventRoundedIcon style={{ fill: '#000000' }} />, name: 'Event', link: '/posts/newEvent'},
   { icon: <ForumRoundedIcon style={{ fill: '#000000' }} />, name: 'Message', link: '/posts/newMessage'},
-  { icon: <ManageAccountsRoundedIcon style={{ fill: '#000000' }} />, name: 'Profile in Development', link:'/profile'},
 ];
 
 const theme = createTheme({
@@ -27,11 +26,13 @@ const theme = createTheme({
   },
 });
 
-
-
-export default function BasicSpeedDial() {
-
-
+const fab = withRouter(({ history }) => {
+  const auth = useContext(AuthContext);
+  
+  if(!auth.isAuthenticated) {
+    return "";
+  }
+  
   return (
     <ThemeProvider theme={theme}>
 
@@ -55,4 +56,6 @@ export default function BasicSpeedDial() {
 
     </ThemeProvider>
   );
-}
+});
+
+export default fab;
