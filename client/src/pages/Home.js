@@ -25,6 +25,7 @@ import Profile from './Profile.js';
 import { AuthProvider } from '../context/AuthContext';
 import LoginPage from './LoginPage';
 import PrivateRoute from '../components/PrivateRoute';
+import SignUp from './SignUpPage';
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
           <Container>
             <Switch>
               <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={SignUp} />
               <Route path="/posts/newMessage" component={PostMessages} />
               <Route path="/posts/newEvent" component={PostEvent} />
               <Route path="/profile" component={Profile} />

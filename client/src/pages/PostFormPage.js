@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import '../components/fancyButtons.css';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AuthContext } from '../context/AuthContext';
+import { withRouter, Link } from 'react-router-dom';
 
 
 const theme = createTheme({
@@ -100,7 +102,6 @@ class PostFormPage extends React.Component {
         </div>
       );
     }
-
 
     return (
       <ThemeProvider theme={theme}>

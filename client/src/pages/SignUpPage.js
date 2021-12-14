@@ -62,12 +62,15 @@ const theme = createTheme({
     },
   });
 
-class LoginPage extends React.Component {
+class SignUpPage extends React.Component {
   state = {
     redirectToReferrer: false,
     failed: false,
     email: "",
     password: "",
+    city: "",
+    firstName: "",
+    lastName: "",
   }
 
   fieldChanged = (name) => {
@@ -77,30 +80,48 @@ class LoginPage extends React.Component {
     }
   }
 
-  login = (e) => {
-    e.preventDefault();
-    const auth = this.context;
-    let { email, password } = this.state;
-    auth.authenticate(email, password)
-      .then((user) => {
-        this.setState({ redirectToReferrer: true });
+  registerUser = (event) => {
+    fetch("/api/auth/signup", {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({firstName: this.state.firstName, lastName: this.state.lastName, password:this.state.password, city:this.state.city, email: this.state.email}),
+    })
+      .then(res => {
+        if(res.ok) {
+          return res.json()
+        }
+
+        throw new Error('Content validation');
       })
-      .catch((err) => {
-        this.setState({ failed: true });
+      .then(post => {
+        this.setState({
+          success: true,
+        });
+        window.location.replace('/');
+      })
+      .catch(err => {
+        this.setState({
+          error: true,
+        });
       });
+      
   }
 
+
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { redirectToReferrer, failed } = this.state;
+    const location = this.state.location;
+    if(this.state.success) return <Redirect to="/" />;
 
-    if (redirectToReferrer) {
-      return <Redirect to={from} />;
-    }
-
-    let err = "";
-    if (failed) {
-      err = <div className="alert alert-danger" role="alert">Login Failed</div>;
+    let err = null;
+    if(this.state.error) {
+      err = (
+        <div style={{lineHeight:'2em', position:'fixed', width: '100%', left:'0', top:'0', textAlign:'center', height: '4em', borderRadius:'1em'}} className="alert alert-danger">
+          "There was an error registering."
+        </div>
+      );
     }
 
     return (
@@ -130,21 +151,28 @@ class LoginPage extends React.Component {
             <TextField required 
                 sx={{width: 400}} id="password" name="password" type="password" label="Password" variant="outlined" value={this.state.password}
                    onChange={this.fieldChanged('password')} /> 
+            <div style={{padding: "0.5em"}}></div>
+            <TextField required 
+                sx={{width: 400}} id="firstName" name="firstName" type="firstName" label="First Name" variant="outlined" value={this.state.firstName}
+                   onChange={this.fieldChanged('firstName')} /> 
+            <div style={{padding: "0.5em"}}></div>
+            <TextField required 
+                sx={{width: 400}} id="lastName" name="lastName" type="lastName" label="Last Name" variant="outlined" value={this.state.lastName}
+                   onChange={this.fieldChanged('lastName')} /> 
+            <div style={{padding: "0.5em"}}></div>
+            <TextField required 
+                sx={{width: 400}} id="city" name="city" type="city" label="City" variant="outlined" value={this.state.city}
+                   onChange={this.fieldChanged('city')} />  
+                         
             <SignInButton 
+              onClick={this.registerUser}
               style={{outline: 'none'}}
               variant="contained" 
               type="submit"
               fullWidth
               sx={{ mt: 3, mb: 2 }}>
-                Sign In
+                Register
             </SignInButton>
-             <Grid container>
-              <Grid item xs>
-                <Link href="/register" variant="body2">
-                  Register
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
@@ -153,6 +181,6 @@ class LoginPage extends React.Component {
   }
 }
 
-LoginPage.contextType = AuthContext
+SignUpPage.contextType = AuthContext
 
-export default LoginPage;
+export default SignUpPage;

@@ -3,9 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import MockAvatarImage from '../images/AvatarMock.png';
-import { deepOrange, deepPurple } from '@mui/material/colors';
-import TextField from '@mui/material/TextField';
+import MockAvatarImage from '../images/Avi.png';
 import '../components/fancyButtons.css';
 import Header from '../components/header';
 import { Container, ImageListItem } from '@mui/material';
@@ -53,7 +51,7 @@ const Profile = withRouter(({ history }) => {
         <Container>
        
         <Card variant="outlined" sx={{borderColor: 'transparent', borderRadius: 8, paddingTop: 5, paddingLeft: 5, paddingRight: 5}}>
-      <div class="Avatar" style={{paddingBottom: "0.5em"}}>
+      <div class="Avatar" style={{paddingBottom: "0em"}}>
         <Avatar style={{backgroundImage: "url(" + MockAvatarImage + ")",transform: "translate(-50%, -50%)", backgroundRepeat: "no-wrap", backgroundPosition: "center", backgroundSize:"200px", position: "relative", marginTop:"3em", top: "30%", left: "50%", right:"50%", width: 110, height: 110 }}> </Avatar>
       </div>
 
@@ -74,7 +72,7 @@ const Profile = withRouter(({ history }) => {
       </Box>
 
 
-      <div style={{width: "100%", paddingTop: '3em'}}>
+      <div style={{position: "relative", width: "100%", paddingTop: '3em'}}>
         <PostsListProfile/>
       </div>
 

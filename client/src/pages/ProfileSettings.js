@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import MockAvatarImage from '../images/AvatarMock.png';
+import MockAvatarImage from '../images/Avi.png';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
