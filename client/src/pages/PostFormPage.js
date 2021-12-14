@@ -5,8 +5,6 @@ import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../context/AuthContext';
 import { withRouter, Link } from 'react-router-dom';
-import CurrentLocation from 'react-current-location-address';
-import publicIp from "public-ip";
 
 const theme = createTheme({
   palette: {
@@ -31,7 +29,6 @@ class PostFormPage extends React.Component {
     city: '',
   }
 
-  publicIp = require('public-ip');
   
   contentChanged = (event) => {
     this.setState({
