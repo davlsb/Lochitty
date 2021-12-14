@@ -32,6 +32,7 @@ router.post('/zip', (req,res) => {
     .then(posts => res.json(posts));
 });
 
+
 router.post('/', passport.isAuthenticated(), (req, res) => {
   let { content, title, latitude, longitude, zip, city  } = req.body;
   
