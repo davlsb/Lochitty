@@ -8,6 +8,8 @@ import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import ForumRoundedIcon from '@mui/icons-material/ForumRounded';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../context/AuthContext';
+import AOS from 'aos';
+
 
 
 const actions = [
@@ -32,12 +34,14 @@ const fab = withRouter(({ history }) => {
   if(!auth.isAuthenticated) {
     return "";
   }
+
+  AOS.init();
   
   return (
     <ThemeProvider theme={theme}>
 
     <Box sx={{outline: 'none', position: 'fixed', fontSize:"4em", bottom: "1%", right: "50%", bcolor: 'linear-gradient(to right bottom, #430089, #82ffa1)', transform: 'translateZ(0px)', flexGrow: 1 }}>
-      <SpeedDial
+      <SpeedDial data-aos={"fade-up"}
         ariaLabel="SpeedDial basic example"
         sx={{outline: 'none', height: 500, position: 'absolute', fontSize:"4em", left: "50%", bottom: 10, right: "50%" }}
         icon={<SpeedDialIcon fontSize="large"/>}

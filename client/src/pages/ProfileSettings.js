@@ -55,7 +55,7 @@ const ProfileSettings = withRouter(({ history }) => {
       </Box>
 
       <div class="Avatar" style={{paddingTop: "5em", paddingBottom: "5em"}}>
-        <Avatar style={{backgroundImage: "url(" + MockAvatarImage + ")",transform: "translate(-50%, -50%)", boxShadow: "inset 0 0 0 4em rgba(0,0,0,0.2)", backgroundRepeat: "no-wrap", backgroundPosition: "center", backgroundSize:"200px", filter: "blur(3px)", webkitFilter: "blur(3px)", position: "absolute", left: "50%", right:"50%", width: 110, height: 110 }}> </Avatar>
+        <Avatar style={{backgroundImage: "url(" + MockAvatarImage + ")",transform: "translate(-50%, -50%)", boxShadow: "inset 0 0 0 4em rgba(0,0,0,0.2)", backgroundRepeat: "no-wrap", backgroundPosition: "center", backgroundSize:"200px", filter: "blur(3px)", webkitFilter: "blur(3px)", position: "absolute", left: "50%", right:"50%", width: 110, height: 110 }}>{auth.user.firstName}</Avatar>
         <Button variant="text" sx={{':hover': { bgcolor: 'transparent', color: 'white',}, }} style={{outline: 'none', textTransform:"capitalize", alignItems: "flex-end", whiteSpace: "nowrap", color:"#689ca4",
           color: "white",
           position: "absolute", left: "50%", right:"50%",

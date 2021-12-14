@@ -9,12 +9,33 @@ import FAB from '../components/fab';
 
 class PostsListPage extends React.Component {
   state = {
-    posts: [`<Post props={'hello',"hellsoo",1} key='Name' />`],
+    posts: [`<Post props={} key='Name' />`],
     loading: true,
   }
 
   componentDidMount() {
-    fetch("/api/posts")
+        
+    var userZip = 0
+    fetch(
+      "http://ip-api.com/json/?fields=city,zip"
+    )
+      .then(response => response.json())
+      .then((data) => {
+        console.log("the zip from API is " + data.zip)
+        let zippy = data.zip 
+        console.log("zippy is " + zippy)
+        userZip = zippy
+        this.wePostPosts(zippy)
+      })
+  }
+
+  wePostPosts(userZip){
+    fetch("/api/posts/zip", {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }, body: JSON.stringify({ userZip }) })
       .then(res => res.json())
       .then(posts => {
         console.log(posts)

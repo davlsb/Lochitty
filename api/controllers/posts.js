@@ -23,6 +23,14 @@ router.get('/', (req,res) => {
     .then(posts => res.json(posts));
 });
 
+router.post('/zip', (req,res) => {
+  let { userZip } = req.body;
+  Post.findAll({
+    where: {
+      zip: userZip
+  }})
+    .then(posts => res.json(posts));
+});
 
 router.post('/', passport.isAuthenticated(), (req, res) => {
   let { content, title, latitude, longitude, zip, city  } = req.body;

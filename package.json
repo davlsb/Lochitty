@@ -15,6 +15,7 @@
     "@iktakahiro/gradient-mui-button": "^0.9.4",
     "@mui/styles": "^5.1.1",
     "@react-google-maps/api": "^2.7.0",
+    "aos": "^2.3.4",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-session": "^1.17.2",

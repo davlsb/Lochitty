@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import FAB from '../components/fab';
 
+
 class ShowPostPage extends React.Component {
   state = {
     loading: true,

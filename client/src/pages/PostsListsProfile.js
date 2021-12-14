@@ -19,7 +19,7 @@ class PostsListPage extends React.Component {
         console.log(posts)
         this.setState({
           loading: false,
-          posts: posts.map((p,ii) => <Post {...p} key={ii} />),
+          posts: posts.reverse().map((p,ii) => <Post {...p} key={ii} />),
         });
       })
       .catch(err => console.log("API ERROR: ", err));
