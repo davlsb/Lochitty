@@ -45,7 +45,7 @@ const Profile = withRouter(({ history }) => {
           justifyContent: "space-around",
           alignItems: 'center',
           padding: '200px',
-          paddingBottom: '50px',
+          paddingBottom: '200px',
           backgroundColor: '#e1ebed',
           backgroundImage: 'linear-gradient(#e1ebed, #e1ebed, #e1ebed, white)',
           }}>
@@ -53,38 +53,28 @@ const Profile = withRouter(({ history }) => {
         <Container>
        
         <Card variant="outlined" sx={{borderColor: 'transparent', borderRadius: 8, paddingTop: 5, paddingLeft: 5, paddingRight: 5}}>
-      <div class="Avatar" style={{paddingBottom: "10em"}}>
-        <Avatar style={{backgroundImage: "url(" + MockAvatarImage + ")",transform: "translate(-50%, -50%)", backgroundRepeat: "no-wrap", backgroundPosition: "center", backgroundSize:"200px", position: "absolute", top: "20%", left: "50%", right:"50%", width: 110, height: 110 }}> </Avatar>
+      <div class="Avatar" style={{paddingBottom: "0.5em"}}>
+        <Avatar style={{backgroundImage: "url(" + MockAvatarImage + ")",transform: "translate(-50%, -50%)", backgroundRepeat: "no-wrap", backgroundPosition: "center", backgroundSize:"200px", position: "relative", marginTop:"3em", top: "30%", left: "50%", right:"50%", width: 110, height: 110 }}> </Avatar>
       </div>
 
       <Box 
-            position = "absolute"
-            top = "35%"
-            left = "41%"
-            display="flex"
-            minHeight="7vh" 
-            zIndex= "3"
-            bottomMargin="2em"
-            textAlign="center"
+            position = "relative"
+            display ='flex'
+            justifyContent ='center'
             >
               <h1> <b>{auth.user.firstName} {auth.user.lastName}</b></h1>
       </Box>
 
       <Box 
-            position = "absolute"
-            top = "42%"
-            left = "46%"
-            display="flex"
-            minHeight="7vh" 
-            zIndex= "3"
-            bottomMargin="4em"
-            textAlign="center"
+            position = "relative"
+            display ='flex'
+            justifyContent ='center'
             >
               <h3>{auth.user.city}</h3>
       </Box>
 
 
-      <div style={{width: "100%", paddingTop: '9em'}}>
+      <div style={{width: "100%", paddingTop: '3em'}}>
         <PostsListProfile/>
       </div>
 
