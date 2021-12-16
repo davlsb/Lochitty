@@ -32,11 +32,15 @@ Each team member will need to do this on their local machine.
 │   │   └── config.json
 │   ├── <strong>controllers</strong>
 │   │   ├── appConfig.js
+│   │   ├── auth.js
 │   │   ├── index.js
 │   │   └── posts.js
+│   ├── <strong>middlewares</strong>
+│   │   ├── authentication.js
 │   └── <strong>models</strong>
 │       ├── index.js
-│       └── post.js
+│       ├── post.js
+│       └── user.js
 ├── <strong>client</strong>
 │   ├── README.md
 │   ├── package-lock.json
@@ -53,8 +57,23 @@ Each team member will need to do this on their local machine.
 │       ├── App.js
 │       ├── App.test.js
 │       ├── <strong>components</strong>
+│       │   ├── AuthButton.js
+│       │   ├── EventModal.js
 │       │   ├── Loading.js
-│       │   └── Post.js
+│       │   ├── Modal.js
+│       │   ├── Post.js
+│       │   ├── PostModal.js
+│       │   ├── PrivateRoute.js
+│       │   ├── eventFetcher.js
+│       │   ├── extendedfab.js
+│       │   ├── fab.js
+│       │   ├── fancyButtons.css
+│       │   ├── header.css
+│       │   ├── header.js
+│       │   ├── lochitty.png
+│       │   ├── map.txt
+│       │   ├── mockData.json
+│       │   └── snackBar.js
 │       ├── index.css
 │       ├── index.js
 │       ├── logo.svg
@@ -67,3 +86,5 @@ Each team member will need to do this on their local machine.
 ├── package-lock.json
 └── package.json
 </pre>
+
+Credits to Penelope Seelochan for designing the logo.
