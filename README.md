@@ -1,5 +1,6 @@
 # Lochitty
-A location based connection application
+A location based connection application, focused to reconnect people and ease our communities back to pre-pandemic norm.
+This project has a hyperlocal setup, so esentially, with a click of a button, any logged in user can post a chat message or plan an event so that any other user within the same zip code can see them.
 
 ## Stack
 
