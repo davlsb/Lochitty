@@ -19,7 +19,7 @@ This project has a hyperlocal setup, so esentially, with a click of a button, an
 ## Credits
 
 - Team members Thamesh Prittipaul and Dee Slawotsky.
-- Penelope Seelochan for designing the logo.
+- Graphic designer Penelope Seelochan for bringing the logo to life.
 
 
 
