@@ -16,9 +16,10 @@ This project has a hyperlocal setup, so esentially, with a click of a button, an
 - React Router
 
 
-## Development Setup
+## Credits
 
-Each team member will need to do this on their local machine.
+Team mate Thamesh Prittipaul.
+Penelope Seelochan for designing the logo.
 
 
 
@@ -88,4 +89,3 @@ Each team member will need to do this on their local machine.
 └── package.json
 </pre>
 
-Credits to Penelope Seelochan for designing the logo.
