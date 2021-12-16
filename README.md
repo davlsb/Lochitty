@@ -18,8 +18,8 @@ This project has a hyperlocal setup, so esentially, with a click of a button, an
 
 ## Credits
 
-Team mate Thamesh Prittipaul.
-Penelope Seelochan for designing the logo.
+- Team members Thamesh Prittipaul and Dee Slawotsky.
+- Penelope Seelochan for designing the logo.
 
 
 
