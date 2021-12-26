@@ -1,5 +1,6 @@
 # Lochitty
-A location based connection application
+A location based connection application, focused to reconnect people and ease our communities back to pre-pandemic norm.
+This project has a hyperlocal setup, so esentially, with a click of a button, any logged in user can post a chat message or plan an event so that any other user within the same zip code can see them.
 
 ## Stack
 
@@ -15,9 +16,10 @@ A location based connection application
 - React Router
 
 
-## Development Setup
+## Credits
 
-Each team member will need to do this on their local machine.
+- Team members Thamesh Prittipaul and Dee Slawotsky.
+- Graphic designer Penelope Seelochan for bringing the logo to life.
 
 
 
@@ -32,11 +34,15 @@ Each team member will need to do this on their local machine.
 │   │   └── config.json
 │   ├── <strong>controllers</strong>
 │   │   ├── appConfig.js
+│   │   ├── auth.js
 │   │   ├── index.js
 │   │   └── posts.js
+│   ├── <strong>middlewares</strong>
+│   │   ├── authentication.js
 │   └── <strong>models</strong>
 │       ├── index.js
-│       └── post.js
+│       ├── post.js
+│       └── user.js
 ├── <strong>client</strong>
 │   ├── README.md
 │   ├── package-lock.json
@@ -53,8 +59,23 @@ Each team member will need to do this on their local machine.
 │       ├── App.js
 │       ├── App.test.js
 │       ├── <strong>components</strong>
+│       │   ├── AuthButton.js
+│       │   ├── EventModal.js
 │       │   ├── Loading.js
-│       │   └── Post.js
+│       │   ├── Modal.js
+│       │   ├── Post.js
+│       │   ├── PostModal.js
+│       │   ├── PrivateRoute.js
+│       │   ├── eventFetcher.js
+│       │   ├── extendedfab.js
+│       │   ├── fab.js
+│       │   ├── fancyButtons.css
+│       │   ├── header.css
+│       │   ├── header.js
+│       │   ├── lochitty.png
+│       │   ├── map.txt
+│       │   ├── mockData.json
+│       │   └── snackBar.js
 │       ├── index.css
 │       ├── index.js
 │       ├── logo.svg
@@ -67,3 +88,4 @@ Each team member will need to do this on their local machine.
 ├── package-lock.json
 └── package.json
 </pre>
+
